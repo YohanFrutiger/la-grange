@@ -1,0 +1,71 @@
+// src/pages/categories.jsx
+// Page Prestations
+
+import { Link } from 'react-router-dom';
+import { useContentSections } from '../hooks/useContentSections';
+import { useCategories } from '../hooks/useCategories';
+import PrestationCard from "../components/features/PrestationCard";
+import Line from "../components/layout/Line";
+import parse from "html-react-parser";
+
+export default function Categories() {
+  const content = useContentSections();
+  const categories = useCategories();
+  const categoriesPageIntroSection = content.getSectionByKey('prestations-intro');
+
+  // Texte d'introduction de la page "Prestations"
+  let PrestationsIntroContent;
+  if (content.loading) {
+    // PrestationsIntroContent = <p>Chargement...</p>; 
+  } else if (content.error) {
+    PrestationsIntroContent = <p>Erreur : Une erreur est survenue lors de la récupération des données.</p>;
+  } else if (categoriesPageIntroSection) {
+    PrestationsIntroContent = (
+      <section className="text-center">
+        <p className="prose mx-auto">{parse(categoriesPageIntroSection.content)}</p>
+      </section>
+    );
+  } else {
+    PrestationsIntroContent = <p>Aucune section "prestations-intro" trouvée.</p>;
+  }
+
+  // Gestion loading/error
+  let PrestationsContent;
+  if (categories.loading) {
+    // PrestationsContent = <p className="text-center">Chargement des catégories...</p>;
+  } else if (categories.error) {
+    PrestationsContent = <p className="text-center text-red-500">Erreur : Une erreur est survenue lors de la récupération des catégories.</p>;
+  } else if (categories.data?.member?.length > 0) {
+    PrestationsContent = (
+      <div className="gap-4 flex flex-wrap justify-center py-4">
+        {categories.data.member.map((cat, index) => (
+          <PrestationCard
+            key={cat.id}
+            cat={cat}
+          />
+        ))}
+      </div>
+    );
+  } else {
+    PrestationsContent = <p className="text-center">Aucune prestation disponible.</p>;
+  }
+
+  return (
+    <>
+    <h3 className='mt-16'>Nos prestations</h3>
+      {PrestationsIntroContent}
+
+      <div className="">
+        {PrestationsContent}
+      </div>
+
+      <p className="text-center">Besoin d'un devis ? Une question ?</p>
+
+      <div className="text-center">
+        <Link to="/contact" className="text-center mx-auto text-blue font-semibold hover:text-blue/80 transition transform hover:scale-120">
+          Cliquez ici !
+        </Link>
+      </div>
+    </>
+  );
+}
