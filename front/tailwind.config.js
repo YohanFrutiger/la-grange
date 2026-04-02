@@ -11,11 +11,12 @@ module.exports = {
       colors: {
         blue: "#2a4b9b",
         violet: "#692b85",
-        green: "#098136",
-        orange: "#f1a80f",
+        green: "#102c26",
+        orange: "#ff7800",
         pink: "#da4d66",
         red: "#b23b53",
-        white: "#f5f5f5",
+        champaign: "#f7e7ce",
+        white: "#ffffff",
       },
       fontFamily: {
         // Ajout des polices du design system
