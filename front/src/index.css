@@ -17,13 +17,14 @@ h5,
 h6 {
   font-family: 'Rosario', serif;
   color: "#111827";
-    text-transform: uppercase;
-  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #102c26;
 }
 
 h1 {
   font-family: 'Rosario', serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);    
+  font-size: clamp(2.5rem, 5vw, 3.5rem);    
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -35,18 +36,18 @@ h2 {
   font-size: clamp(1.5rem, 4vw, 2.5rem);    
   line-height: 1.3;
   font-weight: 600;
-  margin: 2.5rem 0 1rem;
+  /* margin: 2.5rem 0 1rem; */
   text-align: center;
-  color: #692b85
+  
 }
 
 h3 {
-  font-size: clamp(1.25rem, 4vw, 2rem);    
+  font-size: clamp(1.5rem, 4vw, 2rem);    
   line-height: 1.3;
   font-weight: 500;
   margin: 2.5rem 0 0.75rem;
   text-align: center;
-  color: #692b85
+  
 }
 
 h4 {
@@ -55,11 +56,12 @@ h4 {
   font-weight: 500;
   margin: 2.5rem 0 0.75rem;
   text-align: center;
-  color: #692b85
+  
 }
 
 p {
   color: "#111827";
   font-size: 1.125rem; 
   line-height: 1.7;
+  letter-spacing: 0.05em;
 }
